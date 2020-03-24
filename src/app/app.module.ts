@@ -10,6 +10,12 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { BlogViewComponent } from './blog-view/blog-view.component';
 import { AboutComponent } from './about/about.component';
 import { BlogService } from './blog.service';
+import { BlogHttpService } from './blog-http.service';
+import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 @NgModule({
   declarations: [
@@ -18,11 +24,17 @@ import { BlogService } from './blog.service';
     BlogCreateComponent,
     BlogEditComponent,
     BlogViewComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule, 
+    ToastModule.forRoot(),
     RouterModule.forRoot([
       {path:'home',component : HomeComponent},
       {path:'',redirectTo:'home',pathMatch:'full'},
@@ -33,7 +45,7 @@ import { BlogService } from './blog.service';
       {path:'**', component: HomeComponent},
     ])
   ],
-  providers: [BlogService],
+  providers: [BlogService, BlogHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

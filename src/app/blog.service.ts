@@ -51,6 +51,7 @@ export class BlogService
     return this.allBlogs;
 
   }
+  
   public getSingleBlogInformation(currentBlogId):any
   {
     //using a for of loop here from type script

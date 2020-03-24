@@ -4,6 +4,8 @@ import { BlogService } from '../blog.service';
 //imported route related code
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { BlogHttpService } from '../blog-http.service';
+
 @Component({
   selector: 'app-blog-view',
   templateUrl: './blog-view.component.html',
@@ -13,8 +15,9 @@ export class BlogViewComponent implements OnInit,OnDestroy
 {
 
   public currentBlog;
+  
 
-  constructor(private _route:ActivatedRoute,private router: Router,public blogService:BlogService) 
+  constructor(private _route:ActivatedRoute,private router: Router,public blogService:BlogService,public blogHttpService:BlogHttpService) 
   { 
     console.log("blog-view constructor is called");
   }
@@ -25,9 +28,20 @@ export class BlogViewComponent implements OnInit,OnDestroy
     //getting the blog id from the route
     let myBlogId=this._route.snapshot.paramMap.get('blogId');
     console.log(myBlogId);
+    //calling   the function to get the blog with this blogId out of the overall array 
+    this.blogHttpService.getSingleBlogInformation(myBlogId).subscribe(
+      data=>
+      {
+        console.log(data);
+        this.currentBlog=data["data"];
 
-    //calling the function to get the blog with this blogId out of the overall
-    this.currentBlog=this.blogService.getSingleBlogInformation(myBlogId);
+      },
+      error=>
+      {
+        console.log("some error occured");
+        console.log(error.errorMessage)
+      }
+    )
     console.log("this.currentBlog");
   }
   ngOnDestroy()
