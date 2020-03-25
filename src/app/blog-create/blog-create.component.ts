@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { BlogHttpService } from '../blog-http.service';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,16 +9,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./blog-create.component.css']
 })
 export class BlogCreateComponent implements OnInit {
-
-  constructor(private blogHttpService: BlogHttpService,private _route: ActivatedRoute, private router: Router, public toastr: ToastsManager, vcr: ViewContainerRef) 
-  {
-    this.toastr.setRootViewContainerRef(vcr);
-  }
   public blogTitle:string;
   public blogBodyHtml:string;
   public blogDescription:string;
   public blogCategory:string;
   public possibleCategories:["comedy","Drama","Action","Techology"];
+
+  constructor(private blogHttpService: BlogHttpService,private _route: ActivatedRoute, private router: Router, private toastr: ToastrService) 
+  {
+    
+  }
 
   ngOnInit(): void 
   {
@@ -40,11 +40,10 @@ export class BlogCreateComponent implements OnInit {
         console.log("blog-created");
         console.log(data);
         this.toastr.success('Blog Posted!!','success');
-        setTimeout(()=>{
+        setTimeout(()=>
+        {
           this.router.navigate(['/blog',data.data.blogId]);
-        },2000)
-        alert('Blog posted successfully');
-
+        },1000)
       },
       error=>
       {
@@ -55,7 +54,4 @@ export class BlogCreateComponent implements OnInit {
     )
 
   }
-
-  
-
 }

@@ -21,9 +21,9 @@
           </div>
           <div class="form-group">
             <label>Category</label>
-            <select [(ngModel)]="blogCategory" #category="ngModel" name="blogCategory" class="form-control" id="category" required>
-                  <option *ngFor="let category of possibleCategories" [value]="category">{{category}}</option>
-                </select>
+            <select [(ngModel)]="blogCategory" #category="ngModel" name="blogCategory" class="form-control" id="category">
+              <option *ngFor="let category of possibleCategories" [ngValue]="category">{{category}}</option>
+            </select>
           </div>
           <button type="submit" class="btn btn-default" [disabled]="!createBlogForm.form.valid">Post the blog</button>
         </form>

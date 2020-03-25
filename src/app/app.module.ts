@@ -15,7 +15,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -33,8 +34,8 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    BrowserAnimationsModule, 
-    ToastModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot([
       {path:'home',component : HomeComponent},
       {path:'',redirectTo:'home',pathMatch:'full'},
