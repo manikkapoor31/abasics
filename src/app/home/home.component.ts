@@ -13,7 +13,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit 
 {
-
   public allBlogs;
   constructor(public blogHttpService:BlogHttpService) 
   { 
@@ -27,7 +26,6 @@ export class HomeComponent implements OnInit
      console.log(err.message);
      return Observable.throw(err.message);
    }
-
   ngOnInit() 
   {
     console.log("home Onint called");
@@ -50,5 +48,5 @@ export class HomeComponent implements OnInit
     console.log("Home component destroyed");
   }
 
- 
+
 }

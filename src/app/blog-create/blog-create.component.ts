@@ -13,7 +13,7 @@ export class BlogCreateComponent implements OnInit {
   public blogBodyHtml:string;
   public blogDescription:string;
   public blogCategory:string;
-  public possibleCategories:["comedy","Drama","Action","Techology"];
+  public possibleCategories=["comedy","Drama","Action","Techology"];
 
   constructor(private blogHttpService: BlogHttpService,private _route: ActivatedRoute, private router: Router, private toastr: ToastrService) 
   {

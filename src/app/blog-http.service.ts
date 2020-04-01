@@ -16,7 +16,7 @@ export class BlogHttpService {
   public allBlogs;
   public currentBlog;
   public baseUrl='https://blogapp.edwisor.com/api/v1/blogs';
-  private authToken='M2QxZGQ3NzUwZTg3YzRhMzgxNGU4OTFmYmFjMDVjOGY0YmQyZWEyZTMxMDgyN2MyODA0YTY5MzEzM2Y1MjlmMjQyODIyZmJmNTlkZTJkYjY5MTVmOWQ4ZDIyNjBkNDQzNGNmZjE5ZDVlZDcwYWE2NTJkMzVkNmQxNzc0ZGJmOWE1MA=='
+  private authToken='NDljNjAwMDlkOWY4NTc1MzE3Njc5N2Y3NjdkMjMwYWZjYzdlYTUzY2Q1Njg3OWM3N2I5ODZlYTNhMjJmM2M4MWQ5NTc0MjlkOGEzM2M3MWVlYzA3MDAxOTA4YzFmMDkyMjdmMDc2Y2NhMmE2NmY4MGI4MzI5OTViMjZjNTg3YjE4MA=='
 
   constructor(private _http:HttpClient) 
   {
@@ -34,7 +34,7 @@ export class BlogHttpService {
   //method to get all blogs
   public getAllBlogs()
   {
-    let myResponse=this._http.get(this.baseUrl+'/all?authToken=M2QxZGQ3NzUwZTg3YzRhMzgxNGU4OTFmYmFjMDVjOGY0YmQyZWEyZTMxMDgyN2MyODA0YTY5MzEzM2Y1MjlmMjQyODIyZmJmNTlkZTJkYjY5MTVmOWQ4ZDIyNjBkNDQzNGNmZjE5ZDVlZDcwYWE2NTJkMzVkNmQxNzc0ZGJmOWE1MA==');
+    let myResponse=this._http.get(this.baseUrl+'/all?authToken='+this.authToken);
     console.log(myResponse);
     return myResponse;  
   }
