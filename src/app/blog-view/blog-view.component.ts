@@ -3,14 +3,15 @@ import { BlogService } from '../blog.service';
 
 //imported route related code
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { BlogHttpService } from '../blog-http.service';
 import { ToastrService } from 'ngx-toastr';
+import {Location} from '@angular/common'
 
 @Component({
   selector: 'app-blog-view',
   templateUrl: './blog-view.component.html',
-  styleUrls: ['./blog-view.component.css']
+  styleUrls: ['./blog-view.component.css'],
+  providers:[Location] //local providers array
 })
 export class BlogViewComponent implements OnInit,OnDestroy
 {
@@ -18,7 +19,7 @@ export class BlogViewComponent implements OnInit,OnDestroy
   public currentBlog;
   
 
-  constructor(private _route:ActivatedRoute,private router: Router,public blogService:BlogService,public blogHttpService:BlogHttpService,private toastr:ToastrService) 
+  constructor(private _route:ActivatedRoute,private router: Router,public blogService:BlogService,public blogHttpService:BlogHttpService,private toastr:ToastrService,private location: Location) 
   { 
     console.log("blog-view constructor is called");
   }
@@ -45,11 +46,6 @@ export class BlogViewComponent implements OnInit,OnDestroy
     )
     console.log(this.currentBlog);
   }
-  ngOnDestroy()
-  {
-    console.log("blog view destroyed");
-
-  }
   public deleteThisBlog():any{
     this.blogHttpService.deleteBlog(this.currentBlog.blogId).subscribe(
       data=>{
@@ -66,4 +62,13 @@ export class BlogViewComponent implements OnInit,OnDestroy
       }
     )
   }
+  public previousPage():any{
+    this.location.back();
+  }
+  ngOnDestroy()
+  {
+    console.log("blog view destroyed");
+
+  }
+  
 }

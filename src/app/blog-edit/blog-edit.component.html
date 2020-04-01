@@ -4,7 +4,7 @@
   <h3>Edit this blog</h3>
   <div class="row" style="text-align:left">
     <div class="col-md-12">
-      <form #createBlogForm="ngForm" ng-Submit="editThisBlog()">
+      <form #createBlogForm="ngForm" (ngSubmit)="editThisBlog()">
         <div class="form-group">
           <label>Blog Title</label>
           <input type="text" name="blogTitle" [(ngModel)]="currentBlog.title" #title="ngModel" class="form-control" placeholder="Enter blog Title"
@@ -32,7 +32,5 @@
         <button type="submit" class="btn btn-default" [disabled]="!createBlogForm.form.valid">Edit the blog</button>
       </form>
     </div>
-
   </div>
-
 </div>
